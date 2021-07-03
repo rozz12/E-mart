@@ -151,6 +151,9 @@
 								<p class="fs-5 text-dark">&pound<?php echo $trend_row['INITIAL_PRICE']?></p>
 							</div>
 						</div>
+						<div class="">
+							<button type="button" class="btn btn-warning w-100">Add To Cart</button>
+						</div>
 					</div>
 				</a>
 				<?php
