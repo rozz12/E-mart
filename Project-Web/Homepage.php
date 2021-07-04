@@ -226,16 +226,9 @@
 			</div>
 			<div class="row">
 				<div class="col-12 text-center pb-3">
-					<p class="fs-5 fw-lighter">Some quick example text to build on the card title and make up the
-						bulk
-						of the
-						card's content.Some quick example text to build on the card title and make up the bulk of
-						the
-						card's content.Some quick example text to build on the card title and make up the bulk of
-						the
-						card's content.Some quick example text to build on the card title and make up the bulk of
-						the
-						card's content.</p>
+					<p class="fs-5 fw-lighter">Cleckhuddersfax Communal E-Mart is an online shopping website brought up by the combination of several traders
+					running their local businesses in Cleckhuddersfax. This e-commerce site was created with the major goal of promoting the local business
+					by providing services to the customers. The goods that customers will be buying from this portal are all locally produced fresh products.</p>
 				</div>
 			</div>
 		</div>
