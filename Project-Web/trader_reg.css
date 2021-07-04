@@ -1,0 +1,53 @@
+form{
+    margin: 0px auto;
+    padding: 10px 10px;
+}
+
+.logo_img_upper{
+    margin: 0px auto;
+    padding: 0px 10px;
+}
+
+.message{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.error{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    color: red;
+}
+
+form .form-group input{
+    padding-left: 4px;
+}
+
+form .form-group label{
+    padding-right: 8px;
+}
+
+.form-content .upper_header_contents img{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.form-content .upper_header_contents h2{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+@media (max-width: 1168px)
+{
+    form .form-group .first_trader_name{
+        margin-bottom: 7px;
+    }
+
+    form .form-group .contact_first_sec{
+        margin-bottom: 7px;
+    }
+}
