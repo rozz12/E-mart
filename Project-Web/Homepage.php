@@ -178,11 +178,8 @@
 				<div class="card" style="width: 100%;">
 					<img src="images/discount.jpeg" class="card-img-top" alt="discountImage">
 					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk
-							of
-							the card's content.</p>
-						<a href="#" class="btn btn-primary">Read..</a>
+						<h5 class="card-title">Discount</h5>
+						<p class="card-text">Shop now and grab the chance of getting discounts on products. Hurry up!</p>
 					</div>
 				</div>
 			</div>
@@ -190,11 +187,8 @@
 				<div class="card" style="width: 100%;">
 					<img src="images/new.jpg" class="card-img-top" alt="saleImage">
 					<div class="card-body">
-						<h5 class="card-title">Discount</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk
-							of
-							the card's content.</p>
-						<a href="#" class="btn btn-primary">Read..</a>
+						<h5 class="card-title">Sale</h5>
+						<p class="card-text">On the occassion of Christmas, the products have been put up for 10% sale.</p>
 					</div>
 				</div>
 			</div>
