@@ -6,7 +6,7 @@
 	<meta charset="utf-8" />
 	<meta name="author" content="Group1" />
 	<meta name="viewport" content="width = device-width,initial-scale = 1.0">
-	<meta name="keyword" content="CleckHuddersFax-E-Shopping-Cart-Trader-Products-Shops" />
+	<meta name="keyword" content="CleckHuddersFax-E-Shopping-Cart-Trader-Products-Shops"/>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="../Style/Homepage.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
@@ -35,21 +35,21 @@
 		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="../images/image2.jpg" class="d-block w-100" alt="Image1" style="max-height:40%;">
+					<img src="images/image2.jpg" class="d-block w-100" alt="Image1" style="max-height:40%;">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>First slide label</h5>
 						<p>Some representative placeholder content for the first slide.</p>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="../images/cart.jpeg" class="d-block w-100" alt="Image2" style="max-height:40%;">
+					<img src="images/cart.jpeg" class="d-block w-100" alt="Image2" style="max-height:40%;">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>First slide label</h5>
 						<p>Some representative placeholder content for the first slide.</p>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="../images/image2.jpg" class="d-block w-100" alt="Image3" style="max-height:40%;">
+					<img src="images/image2.jpg" class="d-block w-100" alt="Image3" style="max-height:40%;">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>First slide label</h5>
 						<p>Some representative placeholder content for the first slide.</p>
@@ -152,7 +152,7 @@
 							</div>
 						</div>
 						<div class="">
-							<button type="button" class="btn btn-warning w-100">Add To Cart</button>
+							<button type="button" class="btn btn-warning w-100" >Add To Cart</button>
 						</div>
 					</div>
 				</a>
@@ -173,7 +173,7 @@
 		<div class="row col_aboutus">
 			<div class="col-lg-6 custom-div d-flex justify-content-end col-md-6 col-sm-12">
 				<div class="card" style="width: 100%;">
-					<img src="../images/discount.jpeg" class="card-img-top" alt="discountImage">
+					<img src="images/discount.jpeg" class="card-img-top" alt="discountImage">
 					<div class="card-body">
 						<h5 class="card-title">Card title</h5>
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -185,7 +185,7 @@
 			</div>
 			<div class="col-lg-6 custom-div d-flex justify-content-start col-md-6 col-sm-12">
 				<div class="card" style="width: 100%;">
-					<img src="../images/new.jpg" class="card-img-top" alt="saleImage">
+					<img src="images/new.jpg" class="card-img-top" alt="saleImage">
 					<div class="card-body">
 						<h5 class="card-title">Discount</h5>
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk
