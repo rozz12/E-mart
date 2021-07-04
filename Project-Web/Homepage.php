@@ -34,25 +34,28 @@
 	<div class="Image-slider">
 		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
 			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="images/image2.jpg" class="d-block w-100" alt="Image1" style="max-height:40%;">
+				<div class="carousel-item active position-relative carousel_item">
+					<div class="overlay"></div>
+					<img src="./images/carousel1.jpg" class="d-block w-100" alt="Image1" style="max-height:40%;">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>First slide label</h5>
-						<p>Some representative placeholder content for the first slide.</p>
+						<h5 class="fs-1">Get Your Products</h5>
+						<p class="fs-3">Come and shop to get access to healthy local daily items</p>
 					</div>
 				</div>
-				<div class="carousel-item">
-					<img src="images/cart.jpeg" class="d-block w-100" alt="Image2" style="max-height:40%;">
+				<div class="carousel-item position-relative carousel_item">
+					<div class="overlay"></div>
+					<img src="./images/carousel2.jpg" class="d-block w-100" alt="Image2" style="max-height:40%;">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>First slide label</h5>
-						<p>Some representative placeholder content for the first slide.</p>
+						<h5 class="fs-1">Start Shopping Online</h5>
+						<p class="fs-3">Balancing your work life and shopping has never been so easy</p>
 					</div>
 				</div>
-				<div class="carousel-item">
-					<img src="images/image2.jpg" class="d-block w-100" alt="Image3" style="max-height:40%;">
+				<div class="carousel-item position-relative carousel_item">
+					<div class="overlay"></div>
+					<img src="./images/carousel3.png" class="d-block w-100" alt="Image3" style="max-height:40%;">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>First slide label</h5>
-						<p>Some representative placeholder content for the first slide.</p>
+						<h5 class="fs-1">Covid-19 Precautions</h5>
+						<p class="fs-3">Follow these steps to reduce the risk of infection</p>
 					</div>
 				</div>
 			</div>
