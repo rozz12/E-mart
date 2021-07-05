@@ -415,13 +415,14 @@
                     </div>
                     <div class="modal-body">
                         <form action="php/update_product.php" method="POST" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <input type="hidden" name="delprodid" id="del_id">
-                                 
-                             <div class="modal-footer d-flex justify-content-md-end edit_productbuttons">
-                                <button type="submit" name="Delete" class="btn btn-primary">Delete</button>
-                                <button type="reset" name="Cancel" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <input type="hidden" name="delprodid" id="del_id">
+                                    </div>
+                                <div class="modal-footer d-flex justify-content-center edit_productbuttons">
+                                    <button type="submit" name="Delete" class="btn btn-primary w-100">Delete</button>
+                                    <button type="reset" name="Cancel" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancel</button>
+                                </div>
                             </div>
                         </form>
                     </div>
