@@ -1,4 +1,5 @@
    <?php
+   session_start();
      $product_id = $_GET['product_id'];
       if (!isset($product_id)) {
         header('Location: Homepage.php');
@@ -35,17 +36,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <link rel="stylesheet" href="../Style/productdetails.css">
-  <link rel="stylesheet" href="../Style/Homepage.css">
+  <link rel="stylesheet" href="Style/productdetails.css">
+  <link rel="stylesheet" href="Style/Homepage.css">
 
   <!--Owl Carousel CSS-->
-  <link rel="stylesheet" href="../Style/owl.carousel.min.css">
-  <link rel="stylesheet" href="../Style/owl.theme.default.min.css">
-  <link rel="stylesheet" href="../Style/trendingItems.css">
+  <link rel="stylesheet" href="Style/owl.carousel.min.css">
+  <link rel="stylesheet" href="Style/owl.theme.default.min.css">
+  <link rel="stylesheet" href="Style/trendingItems.css">
 
   <title>Product Details</title>
 </head>
@@ -282,17 +281,17 @@
     </div>
 
     <!--Customer's Reviews-->
-    <?php
-      //fetching reviews if any
-      $rvw_qry = 'SELECT comments, review_date, firstname, surname from review JOIN Users ON Users.user_id = review.user_id AND review.product_id ='.$product_id ;
-      $rvw_parse = oci_parse($conn, $rvw_qry);
-      oci_execute($rvw_parse);
-      while($rvw_rows = oci_fetch_assoc($rvw_parse)){
-        //starting of the while loop
-     ?>
     <div class="container-fluid border border-dark mt-5">
       <div class="row p-4 my-2">
         <p class="fs-4">Customer's Reviews</p>
+         <?php
+            //fetching reviews if any
+            $rvw_qry = 'SELECT comments, review_date, firstname, surname from review JOIN Customer ON Customer.customer_id = Customer.customer_id AND review.product_id ='.$product_id ;
+            $rvw_parse = oci_parse($conn, $rvw_qry);
+            oci_execute($rvw_parse);
+            while($rvw_rows = oci_fetch_assoc($rvw_parse)){
+              //starting of the while loop
+           ?>
         <div class="col-md-6 col-sm-12">
           <div class="card m-3">
             <div class="card-body">
@@ -313,8 +312,6 @@
           $same_cat_prod = 'SELECT product_id,product_name,product_image,category(shoptype_id),initial_price,allergy_information FROM product, shop WHERE product.shop_id = shop.shop_id AND category(shoptype_id) = \''.$category.'\' AND ROWNUM<=60';
           $same_cat_parse = oci_parse($conn, $same_cat_prod);
           oci_execute($same_cat_parse);
-          while ($cat_prod_rows = oci_fetch_assoc($same_cat_parse)) {
-            //selecting all related category products
         ?>
       </div>
     </div>
@@ -329,10 +326,14 @@
       <!--Owl Carousel-->
       <div class="row">
         <div class="owl-carousel owl-theme">
+           <?php
+                while ($cat_prod_rows = oci_fetch_assoc($same_cat_parse)) {
+                //selecting all related category products
+          ?>  
           <a href="productDetails.php?product_id=<?php echo $cat_prod_rows['PRODUCT_ID']?>" class="text-decoration-none">
             <div class="card flex-column p-2 card_product mx-2">
               <div class="">
-                <img data-src="../images/<?php echo $cat_prod_rows['PRODUCT_IMAGE']?>" class="img-fluid card_image owl-lazy" alt="product">
+                <img data-src="images/<?php echo $cat_prod_rows['PRODUCT_IMAGE']?>" class="img-fluid card_image owl-lazy" alt="product">
               </div>
               <div class="">
                 <p class="fs-3 text-dark"><?php echo $cat_prod_rows['PRODUCT_NAME']?></p>
@@ -350,7 +351,7 @@
               </div>
             </div>
           </a>
-          <?php
+                        <?php
             //ending the previous while block displaying all same category products
             }
           ?>
@@ -511,21 +512,15 @@
     </script>
 
     <!--JQuery for owl carousel for similar products-->
-    <script src="../Javascript/trendingItemsJq.js"></script>
-    <script src="../Javascript/owl.carousel.min.js"></script>
-    <script src="../Javascript/script.js"></script>
+    <script src="Javascript/trendingItemsJq.js"></script>
+    <script src="Javascript/owl.carousel.min.js"></script>
+    <script src="Javascript/script.js"></script>
 
     <!--JQuery for image zoom-->
-    <script src="../z/jquery.js"></script>
-    <script src="../z/zoom.js"></script>
+    <script src="z/jquery.js"></script>
+    <script src="z/zoom.js"></script>
 
     <!--Bootstrap Links-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-      integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
-      crossorigin="anonymous"></script>
 </body>
 
 </html>
