@@ -11,7 +11,6 @@ date_default_timezone_set('Asia/Kathmandu');
 	$emailparse = oci_parse($conn, $emailqry);
 	oci_execute($emailparse);
 	$useremail = oci_fetch_assoc($emailparse);
-	echo $useremail['EMAIL'];
 	$usermail = $useremail['EMAIL'];
 	oci_free_statement($emailparse);	
 
@@ -41,11 +40,13 @@ $order = oci_fetch_assoc($o_parse);
 $pdf = new FPDF('P','mm','A4');
 
 $pdf->AddPage();
+$pdf->Image('../images/Logo.png',75,0,60,60);
 
 //set font to arial, bold, 14pt
 $pdf->SetFont('Arial','B',14);
 
 //Cell(width , height , text , border , end line , [align] )
+$pdf->Cell(40,35,'',0,1);
 $pdf->Cell(40,5,'',0,0);
 $pdf->Cell(159	,5,'CLECKHUDDERSFAX   E_MART   INVOICE',0,1);//end of line
 //set space
@@ -60,25 +61,25 @@ $pdf->Cell(15,5,$customer['FIRSTNAME'],0,0);
 $pdf->Cell(15,5,$customer['SURNAME'],0,0);
 
 //next tab
-$pdf->Cell(55,5,'',0,0);
+$pdf->Cell(65,5,'',0,0);
 $pdf->Cell(18,5,'Invoice# ',0,0);
 $pdf->Cell(15,5,$invoice,0,1);
 $pdf->Cell(10,5,'',0,0);
 $pdf->Cell(35,5,'Contact Number:',0,0);
 $pdf->Cell(35,5,$customer['CONTACT_NO'],0,0);
 
-$pdf->Cell(30,5,'',0,0);
+$pdf->Cell(40,5,'',0,0);
 $pdf->Cell(13,5,'Date:',0,0);
 $pdf->Cell(10,5,$date,0,1);
 
-$pdf->Cell(110,5,'',0,0);
+$pdf->Cell(120,5,'',0,0);
 $pdf->Cell(15,5,'Order Number:',0,0);
 $pdf->Cell(10,5,$order['ORDER_ID'],0,1);
 
-$pdf->Cell(110,5,'',0,0);
+$pdf->Cell(120,5,'',0,0);
 $pdf->Cell(50,5,'Order Date',0,0);
 $pdf->Cell(50,5,$order['ORDER_DATE'],0,1);
-$pdf->Cell(110	,5,'',0,0);
+$pdf->Cell(120	,5,'',0,0);
 $pdf->Cell(60	,5,'Payment Method : PAYPAL',0,1);//end of line
 
 $pdf->Cell(10,5,'',0,0);
@@ -122,22 +123,22 @@ $pdf->SetFont('Arial','B',14);
 $pdf->Cell(130	,5,'',0,1);
 
 $pdf->Cell(120	,5,'',0,0);
-$pdf->Cell(35	,15,'Subtotal',0,0);
+$pdf->Cell(35	,15,'Subtotal:',0,0);
 $pdf->Cell(15	,15,'GBP',0,0,'L');
 $pdf->Cell(15	,15,$price,0,1,'R');//end of line
 
 $pdf->Cell(120	,5,'',0,0);
-$pdf->Cell(35	,15,'Tax amount',0,0);
+$pdf->Cell(35	,15,'Tax amount:',0,0);
 $pdf->Cell(15	,15,'GBP',0,0,'L');
 $pdf->Cell(15	,15,'1.24',0,1,'R');//end of line
 
 $pdf->Cell(120	,5,'',0,0);
-$pdf->Cell(35	,15,'Total Due',0,0);
+$pdf->Cell(35	,15,'Total Amount:',0,0);
 $pdf->Cell(15	,15,'GBP',0,0,'L');
 $pdf->Cell(15	,15,$grandtotal,0,1,'R');//end of line
 
 //making A string variable of the pdf file
-$pdf = $pdf->Output('','S');
+ $pdf = $pdf->Output();
 
 	
 //Load Composer's autoloader
