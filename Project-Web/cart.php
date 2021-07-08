@@ -15,7 +15,6 @@ session_start();
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Cart</title>
     <link rel="stylesheet" href="Style/Homepage.css">
-
     <link rel="stylesheet" href="Style/owl.carousel.min.css">
     <link rel="stylesheet" href="Style/owl.theme.default.min.css">
     <link rel="stylesheet" href="Style/trendingItems.css">
@@ -151,56 +150,58 @@ session_start();
     <div class="container-fluid">
         <div class="row border border-dark p-4 my-2">
             <p class="fs-4">Customer also bought these items</p>
-                <!--Owl Carousel-->
-                <div class="row">
-                    <div class="owl-carousel owl-theme">
-                        <?php
-                            $trend_qry = 'SELECT product_id,product_name,product_image,allergy_information,initial_price,selling_price,product_rating from product p WHERE ROWNUM <=10';
-                            $trend_fetch = oci_parse($conn, $trend_qry);
-                            oci_execute($trend_fetch);
-                            while($trend_row = oci_fetch_assoc($trend_fetch)){
-                                //starting of the while loop to fetch product
-                        ?>
-                        <a href="productDetails.php?product_id = <?php echo $trend_row['PRODUCT_ID']?>" class="text-decoration-none">
-                            <div class="card flex-column p-2 card_product mx-2">
-                                <div class="">
-                                    <img data-src="images/<?php echo $trend_row['PRODUCT_IMAGE']?>" class="img-fluid card_image owl-lazy" alt="<?php echo $trend_row['PRODUCT_IMAGE']?>">
-                                </div>
-                                <div class="">
-                                    <p class="fs-3 text-dark"><?php echo $trend_row['PRODUCT_NAME']?></p>
-                                </div>
-                                <div class="">
-                                    <p class="fs-5 text-dark">Rating: <?php echo $trend_row['PRODUCT_RATING']?></p>
-                                </div>
-                                <div class="">
-                                    <div class="col d-flex justify-content-between">
-                                        <p class="fs-5 text-dark">&pound<?php echo $trend_row['INITIAL_PRICE']?></p>
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <form action="php/managecart.php?item_id=<?php echo $trend_row['PRODUCT_ID']?>" method="POST">
-                                        <input type="hidden" name="quantity" id="prod_quantity" value="1">
-                                        <input type="hidden" name="tot_price" id="tot_price" value="<?php echo $trend_row['SELLING_PRICE']?>">
-                                        <button type="submit" class="btn btn-warning w-100" name="Add_to_cart">Add To Cart</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </a>
-                        <?php
-                            //ending of the previous while loop
-                            }
-                        ?>
-                    </div>
-                </div>
         </div>
     </div>
-    
+    <!--Owl Carousel-->
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                <?php
+                    $trend_qry = 'SELECT product_id,product_name,product_image,allergy_information,initial_price,selling_price,product_rating from product p WHERE ROWNUM <=10';
+                    $trend_fetch = oci_parse($conn, $trend_qry);
+                    oci_execute($trend_fetch);
+                    while($trend_row = oci_fetch_assoc($trend_fetch)){
+                        //starting of the while loop to fetch product
+                ?>
+                <a href="productDetails.php?product_id = <?php echo $trend_row['PRODUCT_ID']?>" class="text-decoration-none">
+                    <div class="card flex-column p-2 card_product mx-2">
+                        <div class="">
+                            <img data-src="images/<?php echo $trend_row['PRODUCT_IMAGE']?>" class="img-fluid card_image owl-lazy" alt="<?php echo $trend_row['PRODUCT_IMAGE']?>">
+                        </div>
+                        <div class="">
+                            <p class="fs-3 text-dark"><?php echo $trend_row['PRODUCT_NAME']?></p>
+                        </div>
+                        <div class="">
+                            <p class="fs-5 text-dark"><?php echo $trend_row['ALLERGY_INFORMATION']?></p>
+                        </div>
+                        <div class="">
+                            <p class="fs-5 text-dark">Rating: <?php echo $trend_row['PRODUCT_RATING']?></p>
+                        </div>
+                        <div class="">
+                            <div class="col d-flex justify-content-between">
+                                <p class="fs-5 text-dark">&pound<?php echo $trend_row['INITIAL_PRICE']?></p>
+                            </div>
+                        </div>
+                        <div class="">
+                            <form action="php/managecart.php?item_id=<?php echo $trend_row['PRODUCT_ID']?>" method="POST">
+                                <input type="hidden" name="quantity" id="prod_quantity" value="1">
+                                <input type="hidden" name="tot_price" id="tot_price" value="<?php echo $trend_row['SELLING_PRICE']?>">
+                                <button type="submit" class="btn btn-warning w-100" name="Add_to_cart">Add To Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </a>
+                <?php
+                    //ending of the previous while loop
+                    }
+                ?>
+            </div>
+        </div>
     <!--JQuery for owl carousel-->
     <script src="Javascript/trendingItemsJq.js"></script>
     <script src="Javascript/owl.carousel.min.js"></script>
     <script src="Javascript/script.js"></script>
 
-    <!-----Modal For Collection----------------------->
+    <!-----##############################################Modal For Collection----------------------->
                     <div class="modal fade" id="mymodal">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
