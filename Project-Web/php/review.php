@@ -4,10 +4,10 @@
 	if (!isset($_SESSION['Customer_id'])) {
 		echo "<script>
 				alert('You need to login in order to review our products');
+				window.location.href= '../productDetails.php?product_id=".$_POST['product_id']."';
 			</script>";
-		header('Location: ../productDetails.php');	
 	}
-	elseif (isset($_POST['send']) {
+	elseif (isset($_POST['send'])) {
 		extract($_POST);
 		$msg = filter_var(trim($msg),FILTER_SANITIZE_STRING);
 
@@ -22,14 +22,16 @@
 		if ($r) {
 			echo "<script>
 					alert('Thank you for your review');
-					window.location.href= '../productDetails.php?product_id='".$prod_id."
+					window.location.href= '../productDetails.php?product_id=".$prod_id."';
 				</script>";
+				
 		}
 		else{
 			echo "<script>
 					alert('Your review could not be sent at the moment. Sorry for the inconvenience.');
-					window.location.href= '../productDetails.php?product_id='".$prod_id."
+					window.location.href= '../productDetails.php?product_id=".$prod_id."';
 				</script>";
+			
 		}
 	}
 ?>
