@@ -397,12 +397,12 @@
             <form action="php/review.php" method="POST">
               <input type="hidden" name="prod_id" value="<?php echo $product_id?>">
               <div class="form-check mb-4">
-                <input class="form-check-input" name="rating" type="radio" id="radio-179" value="1" checked>
+                <input class="form-check-input" name="rating" type="radio" id="radio-179" value="5" checked>
                 <label class="form-check-label" for="radio-179">Very good</label>
               </div>
 
               <div class="form-check mb-4">
-                <input class="form-check-input" name="rating" type="radio" id="radio-279" value="2">
+                <input class="form-check-input" name="rating" type="radio" id="radio-279" value="4">
                 <label class="form-check-label" for="radio-279">Good</label>
               </div>
 
@@ -411,11 +411,11 @@
                 <label class="form-check-label" for="radio-379">Mediocre</label>
               </div>
               <div class="form-check mb-4">
-                <input class="form-check-input" name="rating" type="radio" id="radio-479" value="4">
+                <input class="form-check-input" name="rating" type="radio" id="radio-479" value="2">
                 <label class="form-check-label" for="radio-479">Bad</label>
               </div>
               <div class="form-check mb-4">
-                <input class="form-check-input" name="rating" type="radio" id="radio-579" value="5">
+                <input class="form-check-input" name="rating" type="radio" id="radio-579" value="1">
                 <label class="form-check-label" for="radio-579">Very bad</label>
               </div>
 
@@ -427,14 +427,15 @@
                 <textarea type="text" id="form79textarea" class="md-textarea form-control" name="msg" rows="3"></textarea>
                 <label for="form79textarea">Your message</label>
               </div>
+              <div class="modal-footer d-flex justify-content-md-end edit_productbuttons">
+            <button type="submit" name="send" class="btn btn-outline-danger waves-effect waves-light">Send
+              <i class="fa fa-paper-plane ml-1"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</button>
+          </div>
           </form>
           </div>
-          <div class="modal-footer d-flex justify-content-md-end edit_productbuttons">
-            <a type="submit" name="send" class="btn btn-outline-danger waves-effect waves-light">Send
-              <i class="fa fa-paper-plane ml-1"></i>
-            </a>
-            <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
-          </div>
+          
         </div>
       </div>
     </div>
