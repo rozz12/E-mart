@@ -1,0 +1,167 @@
+.phone-list{
+	display: inline-block;
+	background-color: orange;
+	margin: 10px 0px;
+}
+.phone-list ul li{
+	list-style-type: none;
+	font-size: 18px;
+}
+.phone-list ul li a{
+	color: black;
+	padding: 4px;
+	border-radius: 10px;
+}
+.phone-list ul li a:hover{
+	color: white;
+	text-decoration: none;
+	background-color: black;
+}
+#myCarousel{
+	justify-content: center;
+	height: 300px;
+}
+.carousel-indicators li{
+	background-color: #0099ff;
+}
+.item{
+	width: 100%;
+	height: 300px;
+}
+.sell_list{
+	margin:12px 0px 12px 40px;
+	min-height: 200px;
+	background-color:#ffcc99;
+}
+.icol{
+	min-height: 100px;
+	min-width: 70px;
+	border:1px solid black;
+	margin: 2px;
+	box-sizing: content-box;
+}
+.scol{
+	margin: 2px;
+	box-sizing: content-box;
+	min-height: 100px;
+	min-width: 70px;
+	
+	border:1px solid black;
+}
+.tcol{
+	margin: 2px;
+	box-sizing: content-box;
+	min-height: 100px;
+	min-width: 70px;
+	
+	border:1px solid black;
+}
+.gcol{
+	margin: 2px;
+	box-sizing: content-box;
+	min-height: 100px;
+	min-width: 70px;
+
+	border:1px solid black;
+}
+.ocol{
+	margin: 2px;
+	box-sizing: content-box;
+	min-height: 100px;
+	min-width: 70px;
+
+	border:1px solid black;
+}
+.ipadcol{
+	margin: 2px;
+	box-sizing: content-box;
+	min-height: 100px;
+	min-width: 70px;
+
+	border:1px solid black;
+}
+.onecol{
+	margin: 2px;
+	box-sizing: content-box;
+	min-height: 100px;
+	min-width: 70px;
+
+	border:1px solid black;
+}
+.mcol{
+	margin: 2px;
+	box-sizing: content-box;
+	min-height: 100px;
+	min-width: 70px;
+
+	border:1px solid black;
+}
+.max_min{
+	background-color: #999966;
+	margin: 8px 8px 8px 10px;
+	padding: 4px;
+}
+.max_min>select{
+	margin-bottom: 15px;
+	margin-right: 15px;
+}
+label{
+	float: left;
+	margin-right: 4px;
+}
+.go_btn{
+	padding-left:85px;
+	padding-top: 4px;
+}
+.sec_col{
+	border:1px solid black;
+	margin: 8px;
+		height: 200px;
+
+}
+.third_col{
+	margin: 8px;
+	border: 1px solid blue;
+		height: 200px;
+}
+.ad_table{
+	background-color: #00b8e6!important;
+	min-height:600px!important;
+	margin-left: 20px!important;
+}
+.phone_table {
+	border:2px solid black;
+	margin-left: 10px!important;
+}
+.phone_table > div{
+	border: 1px solid black;
+	height: 200px;
+}
+.phone_table>div>button{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+h5{
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	display: block;
+}
+.best_seller_section span{
+	margin: 12px;
+}
+.best_seller_section{
+	margin: 12px;
+}
+.best_sellers{
+	display: block;
+	border: 1px dotted black;
+	background-size: cover;
+}
+.best_sellers>p{
+	display: block;
+	padding: 2px;
+	font-size: 19px;
+	font-weight: bold;
+}

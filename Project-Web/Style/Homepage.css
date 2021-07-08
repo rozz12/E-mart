@@ -1,0 +1,189 @@
+/*font styles*/
+@font-face{
+	src: url("../fonts/AmaticSC-Bold.ttf");
+	font-family: Amatic; 
+}
+@font-face{
+	src: url("../fonts/BalooTamma2-Regular.ttf");
+	font-family: Baloo; 
+}
+@font-face{
+	src: url("../fonts/Karla-Regular.ttf");
+	font-family: Karla; 
+}
+@font-face{
+	src: url("../fonts/Roboto-Regular.ttf");
+	font-family: Roboto; 
+}
+@font-face{
+	src: url("../fonts/PatrickHand-Regular.ttf");
+	font-family: Patrikhand; 
+}
+
+/* Navigation */
+.connect a:hover > i{
+	transform: scale(1.8);
+}
+.Facebook:hover{
+	color: #3b5998;
+}
+.twitter:hover{
+	color: #38A1F3;
+}
+.Instagram:hover{
+	color: #8a3ab9;
+}
+
+.search_prod > input{
+	font-family: Karla;
+	border: 1px solid black;
+	border-radius: 0px 15px 15px 0px;
+	border-left: none;
+	outline: none;
+	background-color: white;
+}
+
+.search_prod > button{
+	border: 1px solid black;
+	border-right: none;
+	margin: none;
+	border-radius: 15px 0px 0px 15px;
+	background-color: white;
+}
+
+.search_prod > button:hover{
+	cursor: pointer;
+}
+
+.acc_set button:hover{
+	text-decoration: none;
+	color: #36bfbb;
+}
+
+.home i:hover{
+	color: #36bfbb;
+}
+
+.cate i:hover{
+	color: #36bfbb;
+}
+
+.button_end button:hover{
+	color: #e21728;
+}
+.rating p i{
+	font-size: 12px;
+}
+
+/*Color Scheme*/
+.nav_container .lower_nav_row{
+	background-color: #8D8741;
+}
+
+.shop_by_cat_container{
+	background-color: #659DBD;
+}
+
+.trending_owl_container{
+	background-color: #DAAD86;
+}
+
+
+
+
+@media (max-width: 581px) {
+	.connect{
+		margin: 0px auto;
+		padding-top: 15px;
+		padding-bottom: 10px;
+	}
+	.button_end{
+		display: flex;
+		flex-direction: column;
+		margin: 0px auto;
+		padding-top: 15px;
+	}
+	.button_end button{
+		margin-top: 10px;
+	}
+}
+
+@media (max-width: 700px) { 
+	.button_end{
+		display: flex;
+		margin: 0px auto;
+		padding-top: 15px;
+	}
+	.row_slider{
+		padding-top: 3px;
+	}
+ }
+
+@media (max-width: 768px) {
+	.button_end{
+		display: flex;
+		margin: 0px auto;
+		padding-top: 15px;
+	}
+	.col_aboutus{
+		padding-top:3px;
+	}
+	.col_aboutus .custom-div{
+		padding-bottom: 5px;
+	}
+  }
+  @media (max-width: 1200px) {
+	.button_end button{
+		display: flex;
+		flex-direction: column;
+		width: 10px;
+		margin: 0px auto;
+		padding-top: 15px;
+	}
+}
+@media (max-width: 280px) {
+	.col_logo img{
+		display: flex;
+		justify-content: center;
+	}
+	.custom-div{
+		padding-bottom: 10px;
+	}
+	.card_product{
+		display: flex;
+		justify-content: center;
+	}
+	.shop_button{
+		width: 100%;
+	}
+	.product_button{
+		width: 100%;
+		margin-top: 10px;
+	}
+	.search_prod{
+		padding-top: 5px;
+	}
+  }
+
+@media (max-width: 992px) {
+	.col_logo{
+		display: flex;
+		justify-content: center;
+	}
+	.Login_button{
+		margin-top: 30px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 992px) {
+	.Profile_button{
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 517px) {
+	.col_copyright{
+		font-size: 1px;
+	}
+}

@@ -1,0 +1,26 @@
+.card_image{
+    height: 30vh;
+    width: 100%;
+    object-fit: cover;
+}
+.owl-prev{
+    left: -20px;
+}
+
+.owl-next{
+    right: -20px;
+}
+
+.owl-prev, .owl-next{
+    position: absolute;
+    top: 90px;
+}
+
+.owl-prev span, .owl-next span{
+    font-size: 80px;
+    color: black;
+}
+
+.owl-theme, .owl-nav[class*="owl-"]:hover{
+    background: transparent;
+}
