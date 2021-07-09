@@ -9,13 +9,11 @@ date_default_timezone_set('Asia/Kathmandu');
 	else{
 		$customer_id = $_SESSION['Customer_id'];
 	}
-	echo $customer_id;
 	$price = 0;
 	$total_quantity= 0	;
 
 	//calculate the price paid for all products 
 	foreach ($_SESSION['cart'] as $key => $value) {
-		echo $value['item_name'].' '.$value['quantity'].' '.$value['selling_price'];
 		$total_quantity += $value['quantity'];
 		$price = $price + ($value['quantity'] * $value['selling_price']) ;				
 	}
@@ -39,7 +37,6 @@ date_default_timezone_set('Asia/Kathmandu');
 		oci_execute($parse);
 		$pid = oci_fetch_assoc($parse);
 		$pid = $pid['CURRVAL'];
-		echo $pid;
 		
 		$collect_date = $_SESSION['Collection_day'];
 		$collect_time = $_SESSION['Time_slot'];
@@ -47,14 +44,14 @@ date_default_timezone_set('Asia/Kathmandu');
 		$collect_day = date('l',strtotime($collect_date));
 		echo $collect_day;
 
-		$order_sql = "INSERT INTO orders(total_product_quantity, total_price, collection_time, collection_date, collection_day, order_date, customer_id, payment_id) VALUES(:total_quantity, :grandtotal, :collect_time, to_date('".$collect_date ."','MM/DD/YYYY hh24:mi:ss'), :collect_day, sysdate, 3, :pid)";
+		$order_sql = "INSERT INTO orders(total_product_quantity, total_price, collection_time, collection_date, collection_day, order_date, customer_id, payment_id) VALUES(:total_quantity, :grandtotal, :collect_time, to_date('".$collect_date ."','DD/MM/YYYY hh24:mi:ss'), :collect_day, sysdate, :customer_id, :pid)";
 		$order_parse = oci_parse($conn, $order_sql);
 		oci_bind_by_name($order_parse, ':total_quantity', $total_quantity);
 		oci_bind_by_name($order_parse, ':grandtotal', $grandtotal);
 		oci_bind_by_name($order_parse, ':collect_time', $collect_time);
 		//oci_bind_by_name($order_parse, ':collect_date', $collect_date);
 		oci_bind_by_name($order_parse, ':collect_day', $collect_day);
-		//oci_bind_by_name($order_parse, ':customer_id', $customer_id);
+		oci_bind_by_name($order_parse, ':customer_id', $customer_id);
 		oci_bind_by_name($order_parse, ':pid', $pid);
 		$o =oci_execute($order_parse);
 
@@ -72,6 +69,13 @@ date_default_timezone_set('Asia/Kathmandu');
 		//inserting all items from the order into the DB
 
 		foreach ($_SESSION['cart'] as $key => $value) {
+			//updating stock after item has been ordered
+			$update_prod = "UPDATE Product SET Stock_quantity = (Stock_Quantity-:quantity) WHERE product_id = :product_id";
+			$update_parse = oci_parse($conn, $update_prod);
+			oci_bind_by_name($update_parse, ':quantity', $value['quantity']);
+			oci_bind_by_name($update_parse, ':product_id', $value['item_id']);
+			oci_execute($update_parse);
+
 			$items_orderqry = "INSERT INTO order_item(product_id, order_id, quantity, price) VALUES (:item_id,:order_id,:quantity,:tot_price)";
 			$items_parse = oci_parse($conn, $items_orderqry);
 			oci_bind_by_name($items_parse, ':item_id', $value['item_id']);
@@ -81,6 +85,7 @@ date_default_timezone_set('Asia/Kathmandu');
 			$oi = oci_execute($items_parse);
 		}
 		oci_free_statement($items_parse);
+		oci_free_statement($update_parse);
 		
 		
 
