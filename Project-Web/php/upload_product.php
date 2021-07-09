@@ -5,9 +5,15 @@
 		$error = array();
 		$count = 0;
 		extract($_POST);
+		if (!isset($_POST['shop_id'])) {
+			echo "<script>
+					alert('Please select your shop first');
+					wndow.location.href = '../TraderUI.php';
+				</script>";
+		}	
 		
-		if (empty($product_name)||empty($product_price)||empty($product_quantity)||empty($description)) {
-			header('Location: ../addProducts.php?add=empty');
+		elseif (empty($product_name)||empty($product_price)||empty($product_quantity)||empty($description)) {
+			header('Location: ../TraderUI.php?add=empty');
 		}
 		else{
 			//making sure all fields are validated and not empty
@@ -75,9 +81,10 @@
 			$availability = 'available';
 
 			//inserting into Oracle
-			$qry = 'INSERT INTO Product ( DISCOUNT_ID, PRODUCT_NAME, PRODUCT_IMAGE, DESCRIPTION, INITIAL_PRICE, QUANTITY, MAX_ORDER, MIN_ORDER, AVAILABILITY,ALLERGY_INFORMATION) VALUES ( :DISCOUNT_ID, :PRODUCT_NAME, :PRODUCT_IMAGE, :DESCRIPTION, :INITIAL_PRICE, :QUANTITY, :MAX_ORDER, :MIN_ORDER, :AVAILABILITY,:ALLERGY_INFO)';
+			$qry = 'INSERT INTO Product ( DISCOUNT_ID,  SHOP_ID, PRODUCT_NAME, PRODUCT_IMAGE, DESCRIPTION, INITIAL_PRICE, STOCK_QUANTITY, MAX_ORDER, MIN_ORDER, AVAILABILITY,ALLERGY_INFORMATION) VALUES ( :DISCOUNT_ID,:SHOP_ID, :PRODUCT_NAME, :PRODUCT_IMAGE, :DESCRIPTION, :INITIAL_PRICE, :QUANTITY, :MAX_ORDER, :MIN_ORDER, :AVAILABILITY,:ALLERGY_INFO)';
 			$stmt = oci_parse($conn, $qry);
 			oci_bind_by_name($stmt, ':DISCOUNT_ID', $discount_id);
+			oci_bind_by_name($stmt, ':SHOP_ID', $_GET['shop_id']);
 			oci_bind_by_name($stmt, ':PRODUCT_NAME', $product_name);
 			oci_bind_by_name($stmt, ':PRODUCT_IMAGE', $filename);
 			oci_bind_by_name($stmt, ':DESCRIPTION', $description);
@@ -87,9 +94,9 @@
 			oci_bind_by_name($stmt, ':MIN_ORDER', $min_order);
 			oci_bind_by_name($stmt, ':AVAILABILITY', $availability);
 			oci_bind_by_name($stmt, ':ALLERGY_INFO', $allergy_info);
-			oci_execute($stmt);
+			$r = oci_execute($stmt);
 
-			if ($stmt) {
+			if ($r) {
 				echo '<h1>Product uploaded</h1>';
 			}
 			else

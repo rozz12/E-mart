@@ -73,7 +73,7 @@
 				$d_id = oci_fetch_assoc($stmt1);
 				$discount_id = $d_id['DISCOUNT_ID'];
 
-				$qry_upd = "UPDATE Product SET  Discount_id = :discount_id, Product_Name = :product_name, Product_Image = :filename, Initial_Price = :product_price, Quantity = :product_quantity, Description = :description, Allergy_information =: allergy_info WHERE Product_ID = :hiddenproductid";
+				$qry_upd = "UPDATE Product SET  Discount_id = :discount_id, Product_Name = :product_name, Product_Image = :filename, Initial_Price = :product_price, stock_quantity = :product_quantity, Description = :description, Allergy_information =: allergy_info WHERE Product_ID = :hiddenproductid";
 				$upd_parse = oci_parse($conn, $qry_upd);
 				oci_bind_by_name($upd_parse, ':discount_id', $discount_id);
 				oci_bind_by_name($upd_parse, ':product_name', $product_name);
