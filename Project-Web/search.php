@@ -61,7 +61,7 @@
   <!--Search Options-->
   <div class="container-fluid pb-3">
     <div class="row">
-       <div class="col-xl-2 col-lg-2 col-md-3 col-12">
+      <div class="col-xl-3 col-lg-3 col-md-3">
           <div class="sidebar-categories">
             <div class="head">Trader Type
             </div>
@@ -87,8 +87,8 @@
               </li>
             </ul>
           </div>
-      <!--Search options colum
-      <div class="col-md-3 border border-dark col-sm-12">
+        <!--Search options colum
+        <div class="col-md-3 border border-dark col-sm-12">
         <div class="row">
           <div class="">
             <p class="fs-4 fw-bolder">Search by Trader</p>
@@ -123,7 +123,7 @@
             <p class="fs-4 fw-bolder">Price</p>
           </div>
           <div class="d-flex flex-column justify-content-center">
-            <input type="range" class="form-range slider" id="myRange" min="0" max="200" value="100">
+            <input type="range" class="form-range slider" id="myRange" min="0" max="50" value="25">
             <div class="">
               <p class="fs-5">Cost: <span id="demo"></span></p>
             </div>
@@ -291,11 +291,11 @@
                   //fetch 15 products without any filters
 
           ?>
-          <div class="col-md-4 justify-content-center py-2 px-2">
-            <a href="#" class="text-decoration-none">
+          <div class="col-md-4 justify-content-center py-1 px-1">
+            <a href="productDetails.php?product_id=<?php echo $rows['PRODUCT_ID']?>" class="text-decoration-none">
               <div class="card flex-column px-2 py-2 card_product">
                 <div class="">
-                  <img src="images/<?php echo $rows['PRODUCT_IMAGE']?>" class="img-fluid" alt="product">
+                  <img src="images/<?php echo $rows['PRODUCT_IMAGE']?>" class="img-fluid" style="height:300px; width:550px;" alt="product">
                 </div>
                 <div class="">
                   <p class="fs-2 text-dark"><?php echo $rows['PRODUCT_NAME']?></p>
