@@ -1,0 +1,18 @@
+#form-group{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px;
+}
+.row{
+    padding: 10px;
+}
+#btn{
+    margin-top: 20px;
+    width: 120px;
+    margin-right: 60px;
+    padding: 10px;
+    background-color: #00e6e6;
+    color:black;
+}
+

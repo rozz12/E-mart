@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+    .shop_dropdown{
+        width: 100%;
+    }
+    .shop_list{
+        width: 100%;
+    }
+    .shop_button{
+        width: 100%;
+    }
+    .product_button{
+        width: 100%;
+    }
+}
