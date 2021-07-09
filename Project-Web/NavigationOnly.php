@@ -77,6 +77,11 @@
 									foreach ($_SESSION['cart'] as $key => $value) {
 										$count += $_SESSION['cart'][$key]['quantity'];
 									}
+									if ($count>20) {
+										echo "<script>
+										alert('Your cart has exceeded max capacity, Please remove some items. (Only upto 20 items');
+										</script>";
+									}
 								}
 							?>
 						</div>

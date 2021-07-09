@@ -312,7 +312,7 @@
           $category = oci_fetch_assoc($cat_parse);
           $category = $category['CATEGORY(SHOPTYPE_ID)'];
           //selecting products of the same category
-          $same_cat_prod = 'SELECT product_id,product_name,product_image,category(shoptype_id),initial_price,allergy_information FROM product, shop WHERE product.shop_id = shop.shop_id AND category(shoptype_id) = \''.$category.'\' AND ROWNUM<=60';
+          $same_cat_prod = 'SELECT product_id,product_name,product_image,category(shoptype_id),initial_price,allergy_information,selling_price FROM product, shop WHERE product.shop_id = shop.shop_id AND category(shoptype_id) = \''.$category.'\' AND ROWNUM<=60';
           $same_cat_parse = oci_parse($conn, $same_cat_prod);
           oci_execute($same_cat_parse);
         ?>
