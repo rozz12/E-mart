@@ -130,7 +130,7 @@
 						if(isset($_SESSION['Trader_id'])&&!isset($_SESSION['Customer_id'])){
 					?>
 					<div class="col-lg-5 d-flex justify-content-end col-md-12 col-sm-12 col-xs-12 button_end">
-						<button type="button" class="btn btn-warning me-5 w-100 mt-1 d-flex justify-content-center align-items-center Profile_button" id="profile_id" onclick="ShopFunction()"><i
+						<button type="button" class="btn btn-warning me-5 w-100 mt-1 d-flex justify-content-center align-items-center Shop_button" id="shop" onclick="ShopFunction()"><i
 								class="fas fa-home pe-1"></i>My Shops</button>
 						<button type="button" class="btn btn-warning me-5 w-100 mt-1 d-flex justify-content-center align-items-center Profile_button" id="profile_id" onclick="profileFunction()"><i
 								class="fas fa-user pe-1"></i> My Profile</button>
