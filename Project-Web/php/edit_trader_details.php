@@ -3,14 +3,17 @@
 	include('connection.php');
 	if (isset($_POST['Save_Changes'])){
 		extract($_POST);
+		echo $firstname;
+		echo $lastname;
+		echo $_SESSION['user_type'];
 		if (empty($firstname)||empty($lastname)||empty($phone)||empty($email)) {
-			header('Location: ../edit_user_details.php?input=empty');
+			header('Location: ../userProfile.php?input=empty');
 		}
 		else{
 				$firstname = filter_var(trim($firstname),FILTER_SANITIZE_STRING);
+				$_SESSION['username'] = $firstname;
 				$lastname = filter_var(trim($lastname),FILTER_SANITIZE_STRING);
 				$email = filter_var(trim($email),FILTER_SANITIZE_EMAIL);
-				$area_code = filter_var(trim($area_code),FILTER_SANITIZE_NUMBER_INT);
 				$phone = filter_var(trim($phone),FILTER_SANITIZE_NUMBER_INT);
 				if (empty($newpswd)) {
 					if ($_SESSION['user_type'] == 'Trader') {
@@ -54,15 +57,15 @@
 
 				if (!$r) {
 					$msg = "!Edit Unsucessful!";
-					header('Location: ../edit_user_details.php?update='.$msg);
+					header('Location: ../userProfile.php?update='.$msg);
 				}
 				else{
 					$msg = "!Account Details edited sucessfully!";
-					header('Location: ../edit_user_details.php?update='.$msg);
+					header('Location: ../userProfile.php?update='.$msg);
 				}
 		}
 	}
 	else{
-		header('Location: ../edit_user_details.php');
+		header('Location: ../userProfile.php');
 	}
 ?>
