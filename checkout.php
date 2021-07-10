@@ -1,24 +1,3 @@
-<style type="text/css">
-		#payment-box {
-		    padding: 40px;
-		    margin: 20px;
-		    border: #E4E4E4 1px solid;
-		    display: inline-block;
-		    text-align: center;
-		    border-radius: 3px;
-		}
-
-		#pay_now {
-		    padding: 10px 30px;
-		    background: #09f;
-		    border: #038fec 1px solid;
-		    border-radius: 3px;
-		    color: #FFF;
-		    width: 100%;
-		    cursor: pointer;
-		}
-</style>
-
 <?php
 	session_start();
 	date_default_timezone_set('Asia/Kathmandu');
@@ -27,7 +6,7 @@
 	}
 	elseif(!isset($_SESSION['cart'])||!isset($_SESSION['Collection_day'])){
 		echo '<script> 
-					alert(\'Please insert some products in cart to checkout and select a collection time as well\');
+					alert(\'Please check if you have selected some items or assigned the collection slot details.\');
 					window.location.href = \'cart.php \';
 			 </script>';
 	}
@@ -49,15 +28,46 @@
 			//to get the total number of items and total price
 		$total_quantity = 0;
 		$price = 0;
-		echo "<div id=payment-box>";
-			echo "<table>
-                <tr>
-                <th>S.N</th>
-                <th>Products</th>
-                <th>Quantity</th>
-                <th>Collection Date</th>
-                <th>Grand Total</th>
-                </tr>";
+		echo "<table class='checkout_table'>
+            <tr>
+            <th>S.N</th>
+            <th>Products</th>
+            <th>Quantity</th>
+            <th>Collection Date</th>
+            <th>Grand Total</th>
+            </tr>";
+		echo "<style>
+				.checkout_table{
+					padding: 40px;
+					margin-left: 25%;
+					border: #E4E4E4 1px solid;
+					display: inline-block;
+					text-align: center;
+					border-radius: 3px;
+				}
+				.checkout_table th{
+					padding-right: 30px;
+					font-size: 24px;
+				}
+				.checkout_table td{
+					padding-right: 30px;
+					font-size: 20px;
+				}
+				.pay_button {
+					padding: 10px 30px;
+					margin-left: 20%;
+					background: #09f;
+					border: #038fec 1px solid;
+					border-radius: 3px;
+					color: #FFF;
+					width: 25%;
+					cursor: pointer;
+					margin: 0px auto;
+				}
+				.button_div{
+					display: flex;
+					align-items: center;
+			</style>";
 		//to get the total number of items and total price
 		$total_quantity = 0;
 		$price = 0;
@@ -76,9 +86,9 @@
 				$collection_date = date('d-m-Y',strtotime($_SESSION['Collection_day']));
 				echo "<td rowspan = '".$i."'>".$collection_date."</td>
                 	<td rowspan = '".$i."'>&pound".$grandtotal."</td>
-                	</tr>";
+                	</tr></table>";
 			
-				echo "<tr><form action='https://www.sandbox.paypal.com/cgi-bin/webscr'
+				echo "<form action='https://www.sandbox.paypal.com/cgi-bin/webscr'
 	            method='post' target='_top'>
 	            <input type='hidden' name='business'
 	                value='sb-gwwn26626056@business.example.com'> <input type='hidden'
@@ -88,14 +98,16 @@
 	                name='no_shipping' value='1'> <input type='hidden'
 	                name='currency_code' value='GBP'> <input type='hidden'
 	                name='notify_url'
-	                value='http://localhost/Project-Web/php/notify.php'>
+	                value='http://localhost/E-mart-main/Project-Web/php/notify.php'>
 	            <input type='hidden' name='cancel_return'
-	                value='http://localhost/Project-Web/php/cancel.php'>
+	                value='http://localhost/E-mart-main/Project-Web/php/cancel.php'>
 	            <input type='hidden' name='return'
-	                value='http://localhost/Project-Web/php/return.php'>
+	                value='http://localhost/E-mart-main/Project-Web/php/return.php'>
 	            <input type='hidden' name='cmd' value='_xclick'>
+				<div class='button_div'>
 	                 <input type='submit' class='pay_button' id='pay_now' value='Pay Now'>
-        		</form></tr></table>" ;
+				</div>
+        		</form>" ;
 
         		echo "</div>";
 
