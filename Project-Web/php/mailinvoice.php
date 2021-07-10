@@ -72,12 +72,12 @@ $pdf->Cell(13,5,'Date:',0,0);
 $pdf->Cell(10,5,$date,0,1);
 
 $pdf->Cell(120,5,'',0,0);
-$pdf->Cell(15,5,'Order Number:',0,0);
+$pdf->Cell(35,5,'Order Number:',0,0);
 $pdf->Cell(10,5,$order['ORDER_ID'],0,1);
 
 $pdf->Cell(120,5,'',0,0);
-$pdf->Cell(50,5,'Order Date',0,0);
-$pdf->Cell(50,5,$order['ORDER_DATE'],0,1);
+$pdf->Cell(25,5,'Order Date',0,0);
+$pdf->Cell(25,5,$order['ORDER_DATE'],0,1);
 $pdf->Cell(120	,5,'',0,0);
 $pdf->Cell(60	,5,'Payment Method : PAYPAL',0,1);//end of line
 
