@@ -184,12 +184,6 @@
             //end of previous trader if block
             }
         ?>
-        <div class="row">
-            <div class="col-12 d-flex justify-content-end my-4">
-                <a href="php/logout.php" class="btn btn-secondary btn-lg py-2 px-3 border border-top border-2 signout_button"
-                    role="button"><i class="fas fa-door-open"></i> Sign Out</a>
-            </div>
-        </div>
     </div>
 
     <!--Footer-->
@@ -235,10 +229,15 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="php/update_product.php" method="POST" enctype="multipart/form-data">
+                        <form action = "php/edit_trader_details.php" method="POST">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <input type="hidden" name="hiddenuserid" id="upd_id">
+                                    <input type="hidden" name="hiddenuserid" id="upd_id" value="<?php if (isset($_SESSION['Customer_id'])){ 
+                                        echo $_SESSION['Customer_id'];
+                                        }
+                                    else{
+                                        echo $_SESSION['Trader_id'];
+                                        }?>">
                                     <label for="exampleCustomerName" class="form-label mt-4">Customer Name:</label>
                                 </div>
                                 <div class="col-md-7">
@@ -293,7 +292,7 @@
                                 </div>
                                 <div class="col-md-7">
                                       <div class="input-group mb-3">
-                                        <input type="password" class="form-control" name="password" id="upd_pswd"
+                                        <input type="password" class="form-control" name="newpswd" id="upd_pswd"
                                             aria-label="Repeat_Password" aria-describedby="basic-addon1"><div class="input-group-append"><i class="far fa-eye btn" id = "togglePassword1"></i></div>
                                     </div>
                                 </div>
