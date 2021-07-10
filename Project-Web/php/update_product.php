@@ -100,6 +100,12 @@
 	}
 else if (isset($_POST['Delete'])) {
 			extract($_POST);
+			//first delete from order_items 
+			$del_ord = 'DELETE FROM Order_item WHERE Product_id = :delprodid';
+			$del_ord_parse = oci_parse($conn, $del_ord);
+			oci_bind_by_name($del_ord_parse, ':delprodid', $delprodid);
+			oci_execute($del_ord_parse);
+
 			$del_qry = 'DELETE FROM Product WHERE Product_id = :delprodid';
 			$del_parse = oci_parse($conn, $del_qry);
 			oci_bind_by_name($del_parse, ':delprodid', $delprodid);
