@@ -271,7 +271,7 @@
         }
         else if (isset($_GET['search'])) {
           $search = $_GET['search'];
-          $qry = "SELECT * FROM Product WHERE Product_name LIKE '%$search%'";
+          $qry = "SELECT * FROM Product WHERE UPPER(Product_name) LIKE UPPER('%$search%')";
         }
         else{
             $qry = 'SELECT * FROM product WHERE  ROWNUM <=15';
@@ -294,8 +294,8 @@
           <div class="col-md-4 justify-content-center py-1 px-1">
             <a href="productDetails.php?product_id=<?php echo $rows['PRODUCT_ID']?>" class="text-decoration-none">
               <div class="card flex-column px-2 py-2 card_product">
-                <div class="">
-                  <img src="images/<?php echo $rows['PRODUCT_IMAGE']?>" class="img-fluid" style="height:300px; width:550px;" alt="product">
+                <div class="image-div">
+                  <img src="images/<?php echo $rows['PRODUCT_IMAGE']?>" class="img-fluid" alt="product">
                 </div>
                 <div class="">
                   <p class="fs-2 text-dark"><?php echo $rows['PRODUCT_NAME']?></p>
