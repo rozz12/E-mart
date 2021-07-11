@@ -66,13 +66,13 @@
 	</div>
 
 	<!--Search by category-->
-	<div class="container-fluid border border-1 border-dark p-4 shop_by_cat_container">
+	<div class="container-fluid p-4 shop_by_cat_container">
 		<div class="row pb-5">
 			<div class="col-12 d-flex justify-content-center">
 				<p class="fs-3">Search by Category</p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row d-flex justify-content-evenly">
 			<?php
 				include('php/connection.php');
 				$qry = 'SELECT shop_type from shop_type';
@@ -85,7 +85,7 @@
 				<a href="categoryProductList.php?category=<?php echo $row['SHOP_TYPE']?>" class="text-decoration-none">
 					<div class="card flex-column px-2 py-2 card_product">
 						<div class="">
-							<img src="images/<?php echo $row['SHOP_TYPE']?>.jpg" class="img-fluid" style="height:300px; width:500px;" alt="<?php echo $row['SHOP_TYPE']?>">
+							<img src="images/<?php echo $row['SHOP_TYPE']?>.jpg" class="img-fluid w-100" style="height:280px;" alt="<?php echo $row['SHOP_TYPE']?>">
 						</div>
 						<div class="">
 							<p class="fs-5 text-dark"><?php echo $row['SHOP_TYPE']?></p>
@@ -101,7 +101,7 @@
 	</div>
 
 	<!--Trending Products-->
-	<div class="container-fluid border border-1 border-dark p-4 trending_owl_container">
+	<div class="container-fluid p-4 trending_owl_container">
 		<div class="row pb-5">
 			<div class="col-12 d-flex justify-content-start">
 				<p class="fs-3">Trending Products</p>
@@ -111,7 +111,7 @@
 		<div class="row">
 			<div class="owl-carousel owl-theme">
 				<?php
-					$trend_qry = 'SELECT product_id,product_name,product_image,allergy_information,initial_price,selling_price,product_rating from product p WHERE product_rating>=4.0 AND ROWNUM <=10';
+					$trend_qry = 'SELECT product_id,product_name,product_image,allergy_information,initial_price,selling_price,product_rating from product p WHERE product_rating>=4.0 AND product_id>=10 AND ROWNUM <=10';
 					$trend_fetch = oci_parse($conn, $trend_qry);
 					oci_execute($trend_fetch);
 					while($trend_row = oci_fetch_assoc($trend_fetch)){
@@ -120,7 +120,7 @@
 				<a href="productDetails.php?product_id=<?php echo $trend_row['PRODUCT_ID']?>" class="text-decoration-none">
 					<div class="card flex-column p-2 card_product mx-2">
 						<div class="">
-							<img data-src="images/<?php echo $trend_row['PRODUCT_IMAGE']?>" class="img-fluid card_image owl-lazy" style="height:200px; width:300px;" alt="<?php echo $trend_row['PRODUCT_IMAGE']?>">
+							<img data-src="images/<?php echo $trend_row['PRODUCT_IMAGE']?>" class="img-fluid card_image owl-lazy" style="height:300px;" alt="<?php echo $trend_row['PRODUCT_IMAGE']?>">
 						</div>
 						<div class="">
 							<p class="fs-3 text-dark"><?php echo $trend_row['PRODUCT_NAME']?></p>
@@ -142,11 +142,11 @@
 								if($trend_row['PRODUCT_RATING'] >= 4&&$trend_row['PRODUCT_RATING'] <5)
 									{ 
 								?>
-									<p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+									<p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
 						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
 						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
 						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
-						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
 								<?php	
 									}
 								?>
@@ -154,11 +154,11 @@
 								if($trend_row['PRODUCT_RATING'] >= 3&&$trend_row['PRODUCT_RATING'] <4)
 									{ 
 								?>
-									<p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+									<p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
 						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
-						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
-						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
 								<?php	
 									}
 								?>
@@ -166,11 +166,11 @@
 								if($trend_row['PRODUCT_RATING'] >= 2&&$trend_row['PRODUCT_RATING'] < 3)
 									{ 
 								?>
-									<p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+									<p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
 						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
 								<?php	
 									}
 								?>
@@ -203,7 +203,7 @@
 	<script src="Javascript/script.js"></script>
 
 	<!--About Us-->
-	<div class="container-fluid">
+	<div class="container-fluid about_us_container">
 		<div class="row col_aboutus">
 			<div class="col-lg-6 custom-div d-flex justify-content-end col-md-6 col-sm-12">
 				<div class="card" style="width: 100%;">
@@ -219,7 +219,7 @@
 					<img src="images/new.jpg" class="card-img-top" alt="saleImage">
 					<div class="card-body">
 						<h5 class="card-title">Sale</h5>
-						<p class="card-text">On the occassion of Christmas, the products have been put up for 10% sale.</p>
+						<p class="card-text">On the occassion of Christmas, the newly arrived products have been put up for 10% sale.</p>
 					</div>
 				</div>
 			</div>
@@ -247,15 +247,15 @@
 
 		</script>
 
-		<div class="row pt-5">
+		<div class="row pt-5 aboutus_lower">
 			<div class="row">
 				<div class="col-12 d-flex justify-content-center">
-					<p class="fs-1 fw-light">ABOUT US</p>
+					<p class="fs-1">ABOUT US</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-12 text-center pb-3">
-					<p class="fs-5 fw-lighter">Cleckhuddersfax Communal E-Mart is an online shopping website brought up by the combination of several traders
+					<p class="fs-5 fw-light">Cleckhuddersfax Communal E-Mart is an online shopping website brought up by the combination of several traders
 					running their local businesses in Cleckhuddersfax. This e-commerce site was created with the major goal of promoting the local business
 					by providing services to the customers. The goods that customers will be buying from this portal are all locally produced fresh products.</p>
 				</div>
