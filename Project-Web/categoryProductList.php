@@ -21,7 +21,7 @@
     <!--Navigation-->
     
     <!--Product List-->
-    <div class="container-fluid border border-1 border-dark p-4 mb-3">
+    <div class="container-fluid p-4 category_product_container">
         <div class="row pb-5">
             <div class="col-12 d-flex justify-content-center">
                 <p class="fs-3"><?php echo $category?></p>
@@ -30,7 +30,7 @@
         <div class="row">
             <?php
                 //fetching all products of the same category
-                $cat_qry = 'SELECT product_id, product_image, product_name, initial_price, description, PRODUCT_RATING FROM product p , shop s WHERE p.shop_id = s.shop_id AND category(shoptype_id) = :category ';
+                $cat_qry = 'SELECT product_id, product_image, product_name, initial_price, selling_price, description, PRODUCT_RATING FROM product p , shop s WHERE p.shop_id = s.shop_id AND category(shoptype_id) = :category ';
                 $cat_parse = oci_parse($conn, $cat_qry);
                 oci_bind_by_name($cat_parse, ':category', $category);
                 oci_execute($cat_parse);
@@ -45,9 +45,6 @@
                         </div>
                         <div class="">
                             <p class="fs-3 text-dark"><?php echo $ctgrize_prod['PRODUCT_NAME']?></p>
-                        </div>
-                        <div class="">
-                            <p class="fs-5 text-dark"><?php echo $ctgrize_prod['DESCRIPTION']?></p>
                         </div>
                         <div class="d-inline-flex">
                             <?php 
@@ -66,11 +63,11 @@
                 if($ctgrize_prod['PRODUCT_RATING'] >= 4&&$ctgrize_prod['PRODUCT_RATING'] < 5)
                   { 
                 ?>
-                  <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                  <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
                 <?php 
                   }
                 ?>
@@ -78,11 +75,11 @@
                 if($ctgrize_prod['PRODUCT_RATING'] >= 3&&$ctgrize_prod['PRODUCT_RATING'] < 4)
                   { 
                 ?>
-                  <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                  <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
                 <?php 
                   }
                 ?>
@@ -90,11 +87,11 @@
                 if($ctgrize_prod['PRODUCT_RATING'] >= 2&&$ctgrize_prod['PRODUCT_RATING'] < 3)
                   { 
                 ?>
-                  <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                  <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
                 <?php 
                   }
                 ?>
@@ -107,7 +104,7 @@
                         <div class="">
                             <form action="php/managecart.php?item_id=<?php echo $ctgrize_prod['PRODUCT_ID']?>" method="POST">
                                 <input type="hidden" name="quantity" id="prod_quantity" value="1">
-                                <input type="hidden" name="tot_price" id="tot_price" value="<?php echo $ctgrize_prod['SELLING_PRICE']?>">
+                                <!--<input type="hidden" name="tot_price" id="tot_price" value="<?php echo $ctgrize_prod['SELLING_PRICE']?>">-->
                                 <button type="submit" class="btn btn-warning w-100" name="Add_to_cart">Add To Cart</button>
                             </form>
                         </div>
@@ -122,7 +119,7 @@
     </div>
 
     <!--Footer-->
-    <div class="container-fluid">
+    <div class="container-fluid footer_container">
         <div class="row">
             <div class="col-md-12 d-flex justify-content-end col_paypal">
                 <img title="paypal" src="images/paypalicon.png" alt="payment methods" width="170px" height="60px">
@@ -166,7 +163,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row footer_copyright">
             <div class="col d-inline-flex align-items-center col_copyright">
                 <p class="fs-4 pe-2"><i class="fas fa-copyright"></i></p>
                 <p class="fs-5">Copyright Cleckhuddersfax - All rights reserved 2021</p>
