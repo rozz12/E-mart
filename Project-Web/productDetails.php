@@ -52,7 +52,7 @@
 <body>
   <!--Navigation-->
   <!--Product Details-->
-  <div class="container-fluid">
+  <div class="container-fluid product_details_container">
     <!--Breadcrumb-->
     <div class="row">
       <div class="col-md-12 pb-3">
@@ -130,11 +130,11 @@
                 if($products_rows['PRODUCT_RATING'] >= 4&&$products_rows['PRODUCT_RATING'] <5)
                   { 
                 ?>
-                  <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                  <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
                 <?php 
                   }
                 ?>
@@ -142,11 +142,11 @@
                 if($products_rows['PRODUCT_RATING'] >= 3&&$products_rows['PRODUCT_RATING'] <4)
                   { 
                 ?>
-                  <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                  <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
                 <?php 
                   }
                 ?>
@@ -154,11 +154,11 @@
                 if($products_rows['PRODUCT_RATING'] >= 2&& $products_rows['PRODUCT_RATING'] < 3)
                   { 
                 ?>
-                  <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
-                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                  <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
                         <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+                        <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
                 <?php 
                   }
                 ?>
@@ -174,7 +174,7 @@
         <div class="row product_price pt-4">
           <span class="fs-3"><p>Total: <i class="fas fa-pound-sign"></i><span class="fs-3 ps-2" id="stated_price"><?php echo $products_rows['SELLING_PRICE']?></span></p></span>
         </div>
-        <div style="display: none;opacity: 0;color: orange;font-size: 18px;" class = "stock">
+        <div style="display: none;opacity: 0;color: red;font-size: 18px;" class = "stock">
             <?php echo 'In Stock:'. $products_rows['STOCK_QUANTITY']; ?>
         </div>
       </div>
@@ -302,11 +302,11 @@
           </div>
           <div class="col-10 pb-2">
             <div class="progress mb-3" style="border:0px solid white;">
-              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuemin="100" aria-valuemax="0">
               </div>
             </div>
             <div class="progress mb-3" style="border:0px solid white;">
-              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+              <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
                 aria-valuemax="100"></div>
             </div>
             <div class="progress mb-3" style="border:0px solid white;">
@@ -314,11 +314,11 @@
                 aria-valuemax="100"></div>
             </div>
             <div class="progress mb-3" style="border:0px solid white;">
-              <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
                 aria-valuemax="100"></div>
             </div>
             <div class="progress" style="border:0px solid white;">
-              <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+              <div class="progress-bar" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="100"
                 aria-valuemax="100"></div>
             </div>
           </div>
@@ -327,12 +327,12 @@
     </div>
 
     <!--Customer's Reviews-->
-    <div class="container-fluid border border-dark mt-5">
+    <div class="mt-5 customer_review_container">
       <div class="row p-4 my-2">
         <p class="fs-4 fw-bold">Customer's Reviews</p>
          <?php
             //fetching reviews if any
-            $rvw_qry = 'SELECT comments, review_date, firstname, surname from review JOIN Customer ON Customer.customer_id = Customer.customer_id AND review.product_id ='.$product_id ;
+            $rvw_qry = 'SELECT comments, review_date, firstname, surname from review JOIN Customer ON Customer.customer_id = review.customer_id AND review.product_id ='.$product_id ;
             $rvw_parse = oci_parse($conn, $rvw_qry);
             oci_execute($rvw_parse);
             while($rvw_rows = oci_fetch_assoc($rvw_parse)){
@@ -363,7 +363,7 @@
     </div>
 
     <!--Similar Products-->
-    <div class="container-fluid border border-1 border-dark p-4">
+    <div class="p-4 similar_products_container">
       <div class="row pb-5">
         <div class="col-12 d-flex justify-content-start">
           <p class="fs-3">Similar Products</p>
