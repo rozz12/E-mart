@@ -165,8 +165,8 @@
 
         <div class="row footer_copyright">
             <div class="col d-inline-flex align-items-center col_copyright">
-                <p class="fs-4 pe-2"><i class="fas fa-copyright"></i></p>
-                <p class="fs-5">Copyright Cleckhuddersfax - All rights reserved 2021</p>
+                <p class="fs-4 pe-2 pt-2"><i class="fas fa-copyright"></i></p>
+                <p class="fs-5 pt-2">Copyright Cleckhuddersfax - All rights reserved 2021</p>
             </div>
         </div>
     </div>
