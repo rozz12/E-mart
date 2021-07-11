@@ -245,3 +245,17 @@ button:focus{
         text-decoration: none;
         color: black;
     }
+
+/*Card Image Orientation*/
+.image-div {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-div img {
+    max-width: 100%;
+    max-height: 100%;
+}
