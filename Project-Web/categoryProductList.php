@@ -41,7 +41,7 @@
                 <a href="productDetails.php?product_id=<?php echo $ctgrize_prod['PRODUCT_ID']?>" class="text-decoration-none">
                     <div class="card flex-column px-2 py-2 card_product">
                         <div class="">
-                            <img src="images/<?php echo $ctgrize_prod['PRODUCT_IMAGE']?>" class="img-fluid" style="height:300px; width:550px;" alt="product">
+                            <img src="images/<?php echo $ctgrize_prod['PRODUCT_IMAGE']?>" class="img-fluid w-100" style="height:300px;" alt="product">
                         </div>
                         <div class="">
                             <p class="fs-3 text-dark"><?php echo $ctgrize_prod['PRODUCT_NAME']?></p>
