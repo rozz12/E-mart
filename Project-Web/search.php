@@ -308,11 +308,54 @@
                 </div>
                 <div class="">
                   <div class="col-12 d-inline-flex rating text-dark">
-                    <p class="fs-5 pe-2"><i class="fas fa-star"></i></p>
-                    <p class="fs-5 pe-2"><i class="fas fa-star"></i></p>
-                    <p class="fs-5 pe-2"><i class="fas fa-star"></i></p>
-                    <p class="fs-5 pe-2"><i class="fas fa-star"></i></p>
-                    <p class="fs-5 pe-2"><i class="fas fa-star-half-alt"></i></p>
+                  <?php 
+								if($rows['PRODUCT_RATING'] == 5)
+									{ 
+								?>
+									<p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+								<?php	
+									}
+								?>
+								<?php 
+								if($rows['PRODUCT_RATING'] >= 4&&$rows['PRODUCT_RATING'] <5)
+									{ 
+								?>
+									<p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+								<?php	
+									}
+								?>
+								<?php 
+								if($rows['PRODUCT_RATING'] >= 3&&$rows['PRODUCT_RATING'] <4)
+									{ 
+								?>
+									<p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+								<?php	
+									}
+								?>
+								<?php 
+								if($rows['PRODUCT_RATING'] >= 2&&$rows['PRODUCT_RATING'] < 3)
+									{ 
+								?>
+									<p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star checked"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+						            <p class="fs-6 pe-2"><i class="fas fa-star"></i></p>
+								<?php	
+									}
+								?>
                   </div>
                 </div>
                 <div class="card-footer">
