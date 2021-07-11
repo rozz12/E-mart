@@ -242,8 +242,8 @@
     <!--Cart and availability buttons-->
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6 d-flex justify-content-center col-sm-12 py-1 cart_availability_col">
-          <form action="php/managecart.php?item_id=<?php echo $products_rows['PRODUCT_ID']?>" method="POST">
+        <div class="col-md-6 d-flex justify-content-center col-sm-12 cart_availability_col">
+          <form action="php/managecart.php?item_id=<?php echo $products_rows['PRODUCT_ID']?>" method="POST" class="col-md-6 d-flex justify-content-center col-sm-12 py-1">
             <input type="hidden" name="quantity" id="prod_quantity" value="1">
             <input type="hidden" name="tot_price" id="tot_price" value="<?php echo $products_rows['SELLING_PRICE']?>">
             <button type="submit" name="Add_to_cart" class="btn btn-danger p-3 btn-cart">Add To Cart</button>
