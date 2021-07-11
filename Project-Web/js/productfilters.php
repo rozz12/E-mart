@@ -37,9 +37,9 @@ include('../php/connection.php');
 			oci_execute($parse);
 			while ($rows = oci_fetch_assoc($parse)) {
 				echo "<div class='col-md-4 justify-content-center py-2 px-2'>
-	           		<a href='# class='text-decoration-none'>
+	           		<a href='#' class='text-decoration-none'>
 		              <div class='card flex-column px-2 py-2 card_product'>
-		                <div class=''>
+		                <div class='image-div'>
 		                  <img src='images/".$rows['PRODUCT_IMAGE']."' class='img-fluid' alt='product'>
 		                </div>
 		                <div class=''>
@@ -105,9 +105,9 @@ include('../php/connection.php');
 			oci_execute($parse);
 			while ($rows = oci_fetch_assoc($parse)) {
 				echo "<div class='col-md-4 justify-content-center py-2 px-2'>
-	           		<a href='# class='text-decoration-none'>
+	           		<a href='#' class='text-decoration-none'>
 		              <div class='card flex-column px-2 py-2 card_product'>
-		                <div class=''>
+		                <div class='image-div'>
 		                  <img src='images/".$rows['PRODUCT_IMAGE']."' class='img-fluid' alt='product'>
 		                </div>
 		                <div class=''>
@@ -168,9 +168,9 @@ include('../php/connection.php');
 			oci_execute($parse);
 			while ($rows = oci_fetch_assoc($parse)) {
 				echo "<div class='col-md-4 justify-content-center py-2 px-2'>
-	           		<a href='# class='text-decoration-none'>
+	           		<a href='#' class='text-decoration-none'>
 		              <div class='card flex-column px-2 py-2 card_product'>
-		                <div class=''>
+		                <div class='image-div'>
 		                  <img src='images/".$rows['PRODUCT_IMAGE']."' class='img-fluid' alt='product'>
 		                </div>
 		                <div class=''>
@@ -231,9 +231,9 @@ include('../php/connection.php');
 			oci_execute($parse);
 			while ($rows = oci_fetch_assoc($parse)) {
 				echo "<div class='col-md-4 justify-content-center py-2 px-2'>
-	           		<a href='# class='text-decoration-none'>
+	           		<a href='#' class='text-decoration-none'>
 		              <div class='card flex-column px-2 py-2 card_product'>
-		                <div class=''>
+		                <div class='image-div'>
 		                  <img src='images/".$rows['PRODUCT_IMAGE']."' class='img-fluid' alt='product'>
 		                </div>
 		                <div class=''>
@@ -304,9 +304,9 @@ include('../php/connection.php');
 			oci_execute($parse);
 			while ($rows = oci_fetch_assoc($parse)) {
 				echo "<div class='col-md-4 justify-content-center py-2 px-2'>
-	           		<a href='# class='text-decoration-none'>
+	           		<a href='#' class='text-decoration-none'>
 		              <div class='card flex-column px-2 py-2 card_product'>
-		                <div class=''>
+		                <div class='image-div'>
 		                  <img src='images/".$rows['PRODUCT_IMAGE']."' class='img-fluid' alt='product'>
 		                </div>
 		                <div class=''>
@@ -365,9 +365,9 @@ include('../php/connection.php');
 			oci_execute($parse);
 			while ($rating_prod = oci_fetch_assoc($parse)) {
 				echo "<div class='col-md-4 justify-content-center py-2 px-2'>
-	           		<a href='# class='text-decoration-none'>
+	           		<a href='#' class='text-decoration-none'>
 		              <div class='card flex-column px-2 py-2 card_product'>
-		                <div class=''>
+		                <div class='image-div'>
 		                  <img src='images/". $rating_prod['PRODUCT_IMAGE']."' class='img-fluid' alt='product'>
 		                </div>
 		                <div class=''>
@@ -423,9 +423,9 @@ include('../php/connection.php');
 			oci_execute($parse);
 			while ($price_prod = oci_fetch_assoc($parse)) {
 				echo "<div class='col-md-4 justify-content-center py-2 px-2'>
-            		<a href='# class='text-decoration-none'>
+            		<a href='#' class='text-decoration-none'>
 		              <div class='card flex-column px-2 py-2 card_product'>
-		                <div class=''>
+		                <div class='image-div'>
 		                  <img src='images/".$price_prod['PRODUCT_IMAGE']."' class='img-fluid' alt='product'>
 		                </div>
 		                <div class=''>
