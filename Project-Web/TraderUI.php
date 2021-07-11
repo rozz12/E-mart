@@ -51,6 +51,8 @@
     <title>Trader UI</title>
     <link rel="stylesheet" href="Style/Homepage.css">
     <link rel="stylesheet" href="Style/TraderUI.css">
+
+    <link rel="stylesheet" href="css/search.css">
 </head>
 
 <body>
@@ -60,7 +62,7 @@
     ?>
 
     <!--Trader UI-->
-    <div class="container-fluid py-3">
+    <div class="container-fluid pt-3 trader_UI_container">
         <div class="row">
             <div class="col-12">
                 <p class="fs-3 d-flex justify-content-lg-center justify-content-md-center justify-content-sm-start justify-content-xs-start">
@@ -96,11 +98,12 @@
                     </div>
                 </div>
                 <div class="col-md-4 d-flex justify-content-evenly col-sm-12 col-xs-12">
-                     <button type="button" class="btn btn-primary add" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                     <button type="button" class="btn btn-primary mt-2 add" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Add Product 
                      </button>
                 </div>
             </div>
+
             <!--Products List-->
             <div class="row p-4">
                  <?php
@@ -110,7 +113,7 @@
                 <div class="col-md-3 justify-content-center py-2 px-2">
                    
                     <div class="card flex-column px-2 py-2 card_product">
-                        <div class="">
+                        <div class="image-div">
                             <img src="images/<?php echo $prods['PRODUCT_IMAGE']?>" class="img-fluid" alt="product">
                         </div>
                             <p style="display: none;"><?php echo $prods['PRODUCT_ID'] ?></p>
@@ -471,22 +474,23 @@
                         <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body d-flex">
+                    <div class="modal-body d-flex justify-content-center">
                         <form action="php/update_product.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-5">
                                     <input type="hidden" name="delprodid" id="del_id">
-                                 
-                             <div class="modal-footer d-flex justify-content-md-end edit_productbuttons">
-                                <button type="submit" name="Delete" class="btn btn-primary">Delete</button>
-                                <button type="reset" name="Cancel" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </div> 
+                            </div>  
+                            <div class="modal-footer edit_productbuttons">
+                                <button type="submit" name="Delete" class="btn btn-primary w-100">Delete</button>
+                                <button type="reset" name="Cancel" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancel</button>
                             </div>
                         </form>
                     </div>
                    
                 </div>
             </div>
-        </div>
+</div>
 <!--###################################################################################-->
 
     <script type="text/javascript">
