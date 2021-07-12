@@ -2,12 +2,12 @@
 	include('connection.php');
 
 	if (isset($_POST['Save'])) {
+
 		if (empty($_POST['shop_id'])) {
-			echo 'My'.$shop_id.'asd';
 			echo "<script>
 						alert('Please choose a shop first');
+						window.location.href = '../TraderUI.php';
 				</script>";
-			header('Location= ../TraderUI.php'); 
 		}	
 		else{
 			extract($_POST);
@@ -23,6 +23,20 @@
 			$product_quantity = filter_var(trim($product_quantity),FILTER_SANITIZE_NUMBER_INT);
 			$description = filter_var(trim($description),FILTER_SANITIZE_STRING);
 			$allergy_info = filter_var(trim($allergy_info),FILTER_SANITIZE_STRING);
+
+			//check if such product already exists
+			$chk = "SELECT shop_id,product_name FROM product WHERE product_name=:pname AND shop_id!=:shop_id";
+			$chk_parse = oci_parse($conn, $chk);
+			oci_bind_by_name($chk_parse, ':pname', $product_name);
+			oci_bind_by_name($chk_parse, ':shop_id', $_POST['shop_id']);
+			oci_execute($chk_parse);
+			oci_fetch_assoc($chk_parse);
+			if (oci_num_rows($chk_parse)!=0) {
+				echo '<h1>We are sorry.The product is already being marketed by a different Trader. Our policies do not allow us to market same products from different traders.</h1>';
+				die;
+			}
+
+
 
 			$discount = filter_var(trim($discount),FILTER_SANITIZE_STRING);
 			//getting discount_id from discount according to discount scheme entered
@@ -69,7 +83,7 @@
 
 					}	
 				else{
-					echo 'There was an error during file upload';
+					echo 'There was an error during file upload due to image type.';
 				}
 			}
 			else{
@@ -83,6 +97,8 @@
 			$max_order = 20;
 			$min_order = 1;
 			$availability = 'available';
+			//echo $shop_id.'<br/>';
+			//echo $discount_id.'<br/>';
 
 			//inserting into Oracle
 			$qry = 'INSERT INTO Product ( DISCOUNT_ID,  SHOP_ID, PRODUCT_NAME, PRODUCT_IMAGE, DESCRIPTION, INITIAL_PRICE, SELLING_PRICE, STOCK_QUANTITY, MAX_ORDER, MIN_ORDER, AVAILABILITY,ALLERGY_INFORMATION) VALUES ( :DISCOUNT_ID,:SHOP_ID, :PRODUCT_NAME, :PRODUCT_IMAGE, :DESCRIPTION, :INITIAL_PRICE, :SELLING_PRICE, :QUANTITY, :MAX_ORDER, :MIN_ORDER, :AVAILABILITY,:ALLERGY_INFO)';
