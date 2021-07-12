@@ -51,7 +51,6 @@
     <title>Trader UI</title>
     <link rel="stylesheet" href="Style/Homepage.css">
     <link rel="stylesheet" href="Style/TraderUI.css">
-
     <link rel="stylesheet" href="css/search.css">
 </head>
 
@@ -98,17 +97,18 @@
                     </div>
                 </div>
                 <div class="col-md-4 d-flex justify-content-evenly col-sm-12 col-xs-12">
-                     <button type="button" class="btn btn-primary mt-2 add" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary mt-2 add" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Add Product 
                      </button>
                 </div>
             </div>
-
             <!--Products List-->
             <div class="row p-4">
                  <?php
                          while ($prods = oci_fetch_assoc($trd_parse)) {
                         //fetching all products
+                            if (oci_num_rows($trd_parse) != 1) {
+                                
                     ?>
                 <div class="col-md-3 justify-content-center py-2 px-2">
                    
@@ -136,6 +136,8 @@
                     </div>
                 </div>
                 <?php
+                            //ending of if block
+                            }
                         //ending of the previous while block
                         }
                     ?>
@@ -224,17 +226,15 @@
         <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                        <?php
-                            if(isset($_GET['add'])){
-                                echo "<span class='message'>".$_GET['msg']."</span>";
-                            }
+                    <?php
                             $fullurl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                             if (strpos($fullurl, "add=empty")==true) {
-                                echo "<h3 class='error'>Please fill in all the fields!</h3>";
+                                echo "<h5 class='error'>Please fill in all the fields!</h5>";
                             }
                         ?>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+                        
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
