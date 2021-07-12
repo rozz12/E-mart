@@ -3,7 +3,7 @@
     include('php/connection.php');
     $errors = [];
     if (!isset($_POST['add_button'])) {
-        header('Location:TraderUI.php');
+        //header('Location:TraderUI.php');
     }
     else{
          $shop_name = filter_var(trim($_POST['shopName']),FILTER_SANITIZE_STRING);
@@ -32,7 +32,21 @@
 
         //counting the number of errors
         if (count($errors)>=1) {
-            header('Location: TraderUI.php?errors='.$errors);
+                //header('Location: TraderUI.php?errors='.$errors);
+        }
+
+        //check if shop already exists
+        $chk_qry = "SELECT Shop_name FROM Shop WHERE Shop_name = :shop_name";
+        $chk_parse = oci_parse($conn, $chk_qry);
+        oci_bind_by_name($chk_parse, ':shop_name', $shop_name);
+        oci_execute($chk_parse);
+        oci_fetch_assoc($chk_parse);
+        if (oci_num_rows($chk_parse)!=0) {
+            echo "<script>
+
+                        alert('Shop already exists.');
+                        window.location.href = 'TraderUI.php';
+                </script>";
         }
         else{
             $qry = "SELECT shoptype_id FROM Shop_type WHERE shop_type = '".$shop_type."'";
@@ -49,8 +63,8 @@
             oci_execute($ins_prs);
             oci_free_statement($ins_prs);
             
-            $errors = 'Shop Added Sucesfully.';
-            header('Location: TraderUI.php?errors='.$errors);
+            $errors['sucess'] = 'Shop Added Sucesfully.';
+            //header('Location: TraderUI.php?errors='.$errors);
 
         }
     }
